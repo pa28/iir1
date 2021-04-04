@@ -99,3 +99,30 @@ install(EXPORT iir-targets
   NAMESPACE iir::
   FILE iir-config.cmake
 )
+
+set(PACKAGE_CONTACT "Richard Buckley <richard.buckley>@ieee.org>")
+set(CPACK_DEB_COMPONENT_INSTALL 1)
+set(CPACK_DEBIAN_ENABLE_COMPONENT_DEPENDS 1)
+set(CPACK_DEBIAN_FILE_NAME "DEB-DEFAULT")
+set(CPACK_PACKAGING_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX})
+set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
+set(CPACK_PACKAGE_RELEASE ${PROJECT_VERSION_TWEAK})
+set(CPACK_GENERATOR "DEB")
+set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
+set(CPACK_RPM_PACKAGE_LICENSE "MIT")
+set(CPACK_RPM_PACKAGE_URL "https://github.com/pa28/iir1")
+set(CPACK_RPM_PACKAGE_SUMMARY "DSP IIR Realtime C++ filter library")
+set(CPACK_RPM_PACKAGE_DESCRIPTION "DSP IIR Realtime C++ filter library")
+set(CPACK_RPM_PACKAGE_VENDOR "pa28.github.io")
+set(CPACK_PACKAGE_CONTACT ${PACKAGE_CONTACT})
+set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
+set(CPACK_DEBIAN_PACKAGE_PRIORITY "optional")
+set(CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST_ADDITION
+        /usr/local
+        /usr/local/bin
+        /usr/local/share
+        /usr/local/include
+        /usr/lib/systemd
+        /usr/lib/systemd/system
+        )
+include(CPack)
